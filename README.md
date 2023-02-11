@@ -1,8 +1,11 @@
 # DOOM NANO BRUTALITY
 ![logo](/images/p.png?raw=true)
+## A gameplay mod for Doom Nano
 ____
 
-## Features
+## WARNING! This is a **mod**, so it doesnt include all files, to get required files and wiring, see the [Original game project page](https://github.com/daveruiz/doom-nano)!
+
+### Features
 * 2 playable levels
 * Ammunition system
 * Jumping
@@ -23,4 +26,5 @@ ____
 * More diverse and improved gameplay
 * Logical ending of the game
 
-[Original game](https://github.com/daveruiz/doom-nano)
+#### **TRAILER**
+[![see it in actrion](/images/pr.png?raw=true)](youtu.be/dTjVVqMz2J8)
