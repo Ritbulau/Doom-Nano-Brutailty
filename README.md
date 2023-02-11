@@ -7,6 +7,20 @@ ____
 
 ____
 
+## About
+
+This is a gameplay changing mod for a raycast engine/game **Doom Nano**, that was made for Arduino Nano\Uno. This modification turns it into a fully playable game, but now you can run it **only on Arduino Nano!**\
+If you don't know, how to install, here is the instruction:
+1. Wire whole thing up, using tutorial image on [Original game project page](https://github.com/daveruiz/doom-nano) (Nano have all pins, that Uno does, but in different places).
+2. Download Arduino IDE and connect your Arduino Nano to it.
+3. Download original game from [Original game project page](https://github.com/daveruiz/doom-nano).
+4. Download mod files and replace files original game files with it.
+5. Press "Upload"
+6. Done
+
+Mod will have future updates, so feel free to give feedback or report a bug!
+___
+
 ### Features:
 * 2 playable levels
 * Ammunition system
@@ -33,6 +47,12 @@ ___
 #### **TRAILER**
 [![see it in actrion](/images/pr.png?raw=true)](https://youtu.be/dTjVVqMz2J8)
 
+___
+
+## To do:
++ Modding tools (~~never~~)
++ Fix a bug, that lets you see entities through walls
++ [X] ~~Release the game~~
 ___
 
 ### And please, don't try to research how does it works, my coding skills can hurt you!
