@@ -1,5 +1,5 @@
 # DOOM NANO BRUTALITY
-![logo](/images/pr2.png?raw=true)
+![logo](/images/p.png?raw=true)
 ____
 
 ## Features
