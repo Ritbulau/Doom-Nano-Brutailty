@@ -27,4 +27,4 @@ ____
 * Logical ending of the game
 
 #### **TRAILER**
-[![see it in actrion](/images/pr.png?raw=true)](youtu.be/dTjVVqMz2J8)
+[![see it in actrion](/images/pr.png?raw=true)](https://youtu.be/dTjVVqMz2J8)
