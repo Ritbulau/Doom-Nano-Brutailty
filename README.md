@@ -1,12 +1,6 @@
 # DOOM NANO BRUTALITY
-## Абоба
-### Абоба
-#### Абоба
+![logo](/images/pr2.png?raw=true)
 ____
-
-**bold** \
-*italic*
-
 
 ## Features
 * 2 playable levels
@@ -30,5 +24,3 @@ ____
 * Logical ending of the game
 
 [Original game](https://github.com/daveruiz/doom-nano)
-
-![logo](/images/pr2.png?raw=true)
