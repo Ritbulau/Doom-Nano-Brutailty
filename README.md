@@ -5,7 +5,9 @@ ____
 
 ## WARNING! This is a **mod**, so it doesnt include all files, to get required files and wiring, see the [Original game project page](https://github.com/daveruiz/doom-nano)!
 
-### Features
+____
+
+### Features:
 * 2 playable levels
 * Ammunition system
 * Jumping
@@ -26,5 +28,12 @@ ____
 * More diverse and improved gameplay
 * Logical ending of the game
 
+___
+
 #### **TRAILER**
 [![see it in actrion](/images/pr.png?raw=true)](https://youtu.be/dTjVVqMz2J8)
+
+___
+
+### And please, don't try to research how does it works, my coding skills can hurt you!
+
