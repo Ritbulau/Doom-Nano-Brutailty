@@ -15,8 +15,10 @@ If you don't know, how to install, here is the instruction:
 2. Download Arduino IDE and connect your Arduino Nano to it.
 3. Download original game from [Original game project page](https://github.com/daveruiz/doom-nano).
 4. Download mod files and replace files original game files with it.
-5. Press "Upload"
-6. Done
+5. Delete doom-nano.ino file
+6. Get this code to the arduino IDE
+7. Press "Upload"
+8. Done
 
 Mod will have future updates, so feel free to give feedback or report a bug!
 ___
