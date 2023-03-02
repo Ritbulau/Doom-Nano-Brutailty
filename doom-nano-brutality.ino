@@ -622,6 +622,7 @@ void renderMap(const uint8_t level[], double view_height) {
     uint8_t depth = 0;
     bool hit = 0;
     bool side; 
+    bool coll = 0;
     while (!hit && depth < MAX_RENDER_DEPTH) {
       if (side_x < side_y) {
         side_x += delta_x;
@@ -635,8 +636,9 @@ void renderMap(const uint8_t level[], double view_height) {
 
       uint8_t block = getBlockAt(level, map_x, map_y);
 
-      if (block == E_WALL || block == E_DOOR || block == E_DOOR2 || block == E_DOOR3) {
+      if (block == E_WALL || block == E_DOOR || block == E_DOOR2 || block == E_DOOR3 || block == E_COLL) {
         hit = 1;
+        if (block == E_COLL) coll = 1;
       } else {
         // Spawning entities here, as soon they are visible for the
         // player. Not the best place, but would be a very performance
@@ -671,12 +673,22 @@ void renderMap(const uint8_t level[], double view_height) {
       // rendered line height
       uint8_t line_height = RENDER_HEIGHT / distance - 1;
 
-      drawVLine(
-        x,
-        view_height / distance - line_height / 2 + RENDER_HEIGHT / 2,
-        view_height / distance + line_height / 2 + RENDER_HEIGHT / 2,
-        GRADIENT_COUNT - int(distance / MAX_RENDER_DEPTH * GRADIENT_COUNT) - side * 2
-      );
+      if (coll == true){
+        drawVLine(
+          x,
+          view_height / distance - line_height / 2 + RENDER_HEIGHT / 2 - 17,
+          view_height / distance + line_height / 2 + RENDER_HEIGHT / 2 ,
+          GRADIENT_COUNT - int(distance / MAX_RENDER_DEPTH * GRADIENT_COUNT) - side * 2
+        );
+      }
+      else {
+        drawVLine(
+          x,
+          view_height / distance - line_height / 2 + RENDER_HEIGHT / 2,
+          view_height / distance + line_height / 2 + RENDER_HEIGHT / 2 ,
+          GRADIENT_COUNT - int(distance / MAX_RENDER_DEPTH * GRADIENT_COUNT) - side * 2
+        );
+      }
     }
   }
 }
@@ -1124,7 +1136,7 @@ void loopIntro() {
   drawText(SCREEN_WIDTH / 2.36 - 25, SCREEN_HEIGHT * .79, F("NANO BRUTALITY"));
   drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .3, F("PRESS"));
   drawText(SCREEN_WIDTH / 0.99 - 25, SCREEN_HEIGHT * .3, F("FIRE"));
-  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.1"));
+  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.2"));
   display.display();
   playSound(mus_s1_snd, MUS_S1_SND_LEN);
   while (!exit_scene) {
