@@ -9,6 +9,7 @@
 #define E_DOOR              0xD   
 #define E_DOOR2             0xA   
 #define E_DOOR3             0xB   
+#define E_COLL              0xC   
 #define E_PLAYER            0x1   // P
 #define E_ENEMY             0x2   // E
 #define E_EXIT              0x7   // X
