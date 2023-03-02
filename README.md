@@ -19,7 +19,7 @@ If you don't know, how to install, here is the instruction:
 6. rename project folder to "doom-nano-brutality".
 7. Get this code to the arduino IDE.
 8. Press "Upload".
-9. Done
+9. Done!
 
 Mod will have future updates, so feel free to give feedback or report a bug!
 ___
