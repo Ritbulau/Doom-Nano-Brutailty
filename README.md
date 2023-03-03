@@ -44,6 +44,7 @@ ___
 * More sounds
 * More diverse and improved gameplay
 * Logical ending of the game
+* Multi - altitude environment
 
 ___
 
