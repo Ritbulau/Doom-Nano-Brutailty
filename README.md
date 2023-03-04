@@ -55,7 +55,7 @@ ___
 
 ## To do:
 + Modding tools (~~never~~)
-+ Fix a bug, that lets you see entities through walls
++ [X] ~~Fix a bug, that lets you see entities through walls~~
 + [X] ~~Release the game~~
 ___
 
