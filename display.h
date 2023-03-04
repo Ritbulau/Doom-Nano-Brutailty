@@ -38,7 +38,7 @@ uint8_t *display_buf;
 
 // We don't handle more than MAX_RENDER_DEPTH depth, so we can safety store
 // z values in a byte with 1 decimal and save some memory,
-uint8_t zbuffer[ZBUFFER_SIZE];
+uint16_t zbuffer[ZBUFFER_SIZE];
 
 void setupDisplay() {
   // Setup display
