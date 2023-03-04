@@ -1136,7 +1136,7 @@ void loopIntro() {
   drawText(SCREEN_WIDTH / 2.36 - 25, SCREEN_HEIGHT * .79, F("NANO BRUTALITY"));
   drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .3, F("PRESS"));
   drawText(SCREEN_WIDTH / 0.99 - 25, SCREEN_HEIGHT * .3, F("FIRE"));
-  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.2"));
+  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.3"));
   display.display();
   playSound(mus_s1_snd, MUS_S1_SND_LEN);
   while (!exit_scene) {
@@ -1334,6 +1334,8 @@ void loopGamePlay() {
       else if (enemyCount == 13) {
         player.pos.y = player.pos.y + 12;
         enemyCount = 0;
+        enemyCount2 = 8;
+        updateHud();
       }
     }
     
