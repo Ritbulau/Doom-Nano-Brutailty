@@ -31,7 +31,7 @@ constexpr uint8_t SOUND_PIN   = 9; // do not change, belongs to used timer
 #define MAX_RENDER_DEPTH    12
 #define MAX_SPRITE_DEPTH    8
 
-#define ZBUFFER_SIZE        SCREEN_WIDTH / Z_RES_DIVIDER - 1
+#define ZBUFFER_SIZE        SCREEN_WIDTH / Z_RES_DIVIDER + 4
 
 // Level 
 #define LEVEL_WIDTH_BASE    6
