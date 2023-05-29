@@ -232,7 +232,7 @@ UID detectCollision(const uint8_t level[], Coords *pos, double relative_x, doubl
   uint8_t round_y = int(pos->y + relative_y);
   uint8_t block = getBlockAt(level, round_x, round_y);
 
-  if (block == E_WALL) {
+  if (block == E_WALL & debug == false) {
     playSound(hit_wall_snd, HIT_WALL_SND_LEN);
     return create_uid(block, round_x, round_y);
   }
@@ -890,7 +890,7 @@ void updateHud() {
   display.clearRect(12, 58, 100, 6);
   display.clearRect(50, 58, 15, 6);
   display.clearRect(58, 58, 70, 6);
-  
+
   if (z == 1) {
     drawText(31, 58, F("FOUND "));
     drawText(65, 58, F(" SHELLS"));
@@ -980,35 +980,40 @@ void loopMid() {
   getControllerData();
   #endif
   if (mid == 1) {
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .14, F("YOU ARE THE DOOM GUY, AND"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .23, F("YOU ARE WITNESSING FAILED"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .32, F("UAC EXPIREMENT ON MARS."));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .42, F("WHEN DEMONS STARTED"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .51, F("ENTERING OUR WORLD, YOU"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .60, F("WERE ON UAC MARS DEMON"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .70, F("SHOOTING FACILITY, YOU "));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .80, F("HAVE TO GET OUT OF HERE."));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .14, F("YEAR 2027. HUMANS REACHED"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .23, F("OTHER PLANETS, BUT WE ARE"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .32, F("NOT ALONE, THERE IS ALSO"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .42, F("HOSTILE ALIENS HERE. YOU"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .51, F("ARE AN UNKNOWN MARINE,"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .60, F("WHO FIGHT IN OLD LAB FOR"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .70, F("REMNANTS OF EARTH. RESIST"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .80, F("ALIENS TO ESCAPE."));
   }
   else if (mid == 2){
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .16, F("AFTER KILLING BUNCH OF "));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .28, F("IMPS, LIGHTS TURNED OFF"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .40, F("AND A TELEPORT OPENED IN"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .52, F("FRONT OF YOU. YOU HAD NO"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .64, F("CHOISE AND STEPPED IN..."));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .14, F("AFTER KILLING BUNCH OF "));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .23, F("ALIENS, LIGHTS TURNED OFF"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .32, F("AND THE FLOOR COLLAPSED"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .42, F("UNDER YOUR FEET AND YOU "));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .51, F("FELL INTO THE UTILITY"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .60, F("ROOMS. YOU HAVE NO CHOICE"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .70, F("BUT TO START LOOKING FOR "));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .80, F("EXIT, WHILE FIGHT ALIENS."));
+    
     levelID = true;
   }
 
   else {
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .14, F("AFTER HARD FIGHT YOU WENT"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .23, F("TO EXIT. YOU ACTIVATED"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .32, F("YOUR HELMET AND STEPPED"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .42, F("OUT TO MARS SURFACE WITH"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .51, F("SPACESHIP AND ANOTHER"));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .60, F("FACILITY IN THE DISTANCE."));
-    drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .70, F("FIN. TO BE CONTINIED..."));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .14, F("AFTER HARD FIGHT YOU WENT"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .23, F("TO EXIT. AND AS SOON AS"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .32, F("YOU STEP OUT, AN ALIEN"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .42, F("ATTACKS YOU FROM BEHIND"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .51, F("AND KILLS YOU. YOU DIDNT"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .60, F("EXPECT THIS. YOUR FIGHT"));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .70, F("CAN NOT END LIKE THIS..."));
+    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .80, F("THE END (MAYBE...)"));
   }
-  drawText(SCREEN_WIDTH / 2.1 - 25, SCREEN_HEIGHT * .01, F("THE STORY"));
-  drawText(SCREEN_WIDTH / 2 - 25, SCREEN_HEIGHT * .91, F("PRESS FIRE"));
+  drawText(SCREEN_WIDTH / 2.1 - 24, SCREEN_HEIGHT * .01, F("THE STORY"));
+  drawText(SCREEN_WIDTH / 2 - 27, SCREEN_HEIGHT * .91, F("PRESS FIRE"));
 
   display.display();
   while (!exit_scene) {
@@ -1088,7 +1093,7 @@ void loopScore() {
   else if (player.cheats == true) {
     drawText(SCREEN_WIDTH / 0.99 - 49, SCREEN_HEIGHT * .4, F("NO SCORE"));
     drawText(SCREEN_WIDTH / 0.99 - 37, SCREEN_HEIGHT * .5, F("FOR"));
-    drawText(SCREEN_WIDTH / 0.99 - 49, SCREEN_HEIGHT * .6, F("CHEATERS"));
+    drawText(SCREEN_WIDTH / 0.99 - 49, SCREEN_HEIGHT * .6, F("CHEESERS"));
     drawText(SCREEN_WIDTH / 0.99 - 52, SCREEN_HEIGHT * .91, F("PRESS FIRE"));
     if (input_fire()) {
       display.clearRect(1, 1, 127, 63);
@@ -1136,7 +1141,7 @@ void loopIntro() {
   drawText(SCREEN_WIDTH / 2.36 - 25, SCREEN_HEIGHT * .79, F("NANO BRUTALITY"));
   drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .3, F("PRESS"));
   drawText(SCREEN_WIDTH / 0.99 - 25, SCREEN_HEIGHT * .3, F("FIRE"));
-  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.3"));
+  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.4"));
   display.display();
   playSound(mus_s1_snd, MUS_S1_SND_LEN);
   while (!exit_scene) {
@@ -1701,5 +1706,3 @@ void loop(void) {
  // Stop (so it doesn't repeat forever driving you crazy--you're welcome).
 
 }
-
-
