@@ -1093,7 +1093,7 @@ void loopScore() {
   else if (player.cheats == true) {
     drawText(SCREEN_WIDTH / 0.99 - 49, SCREEN_HEIGHT * .4, F("NO SCORE"));
     drawText(SCREEN_WIDTH / 0.99 - 37, SCREEN_HEIGHT * .5, F("FOR"));
-    drawText(SCREEN_WIDTH / 0.99 - 49, SCREEN_HEIGHT * .6, F("CHEESERS"));
+    drawText(SCREEN_WIDTH / 0.99 - 49, SCREEN_HEIGHT * .6, F("CHEATERS"));
     drawText(SCREEN_WIDTH / 0.99 - 52, SCREEN_HEIGHT * .91, F("PRESS FIRE"));
     if (input_fire()) {
       display.clearRect(1, 1, 127, 63);
