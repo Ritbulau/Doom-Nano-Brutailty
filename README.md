@@ -7,6 +7,8 @@ ____
 
 Now Doom Nano Brutality is playable on Wokwi!
 
+[Wokwi Doom Nano Brutality emulator link](https://wokwi.com/projects/371239802117756929)
+
 Also, all projects based on Nano Engine can be launched on Wokwi!
 
 ____
