@@ -6,6 +6,7 @@ ____
 ## Multi-platform playability
 
 Now Doom Nano Brutality is playable on Wokwi!
+
 Also, all projects based on Nano Engine can be launched on Wokwi!
 
 ____
@@ -13,6 +14,7 @@ ____
 ## About
 
 This is a gameplay changing mod for a raycast engine/game **Doom Nano**, that was made for Arduino Nano\Uno. This modification turns it into a ***fully playable game!***
+
 Doom Nano Page: [Original game project page](https://github.com/daveruiz/doom-nano)
 This mod was made by using Nano Engine.
 
