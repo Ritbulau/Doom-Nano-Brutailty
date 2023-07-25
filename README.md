@@ -3,26 +3,31 @@
 ## A gameplay mod for Doom Nano
 ____
 
-## WARNING! This is a **mod**, so it doesnt include all files, to get required files and wiring, see the [Original game project page](https://github.com/daveruiz/doom-nano)!
+## Multi-platform playability
+
+Now Doom Nano Brutality is playable on Wokwi!
+Also, all projects based on Nano Engine can be launched on Wokwi!
 
 ____
 
 ## About
 
 This is a gameplay changing mod for a raycast engine/game **Doom Nano**, that was made for Arduino Nano\Uno. This modification turns it into a ***fully playable game!***
+Doom Nano Page: [Original game project page](https://github.com/daveruiz/doom-nano)
+This mod was made by using Nano Engine.
 
 If you don't know, how to install, here is the instruction:
-1. Wire whole thing up, using tutorial image on [Original game project page](https://github.com/daveruiz/doom-nano) (Nano have all pins, that Uno does, but in different places).
+1. Wire whole thing up.
 2. Download Arduino IDE and connect your Arduino Nano/Uno to it.
-3. Download original game from [Original game project page](https://github.com/daveruiz/doom-nano).
-4. Download mod files and replace files original game files with it.
-5. Delete doom-nano.ino file.
-6. rename project folder to "doom-nano-brutality".
-7. Get this code to the arduino IDE.
-8. Press "Upload".
-9. Done!
+3. Download mod files and unpack doom-nano-brutality folder.
+4. Open doom-nano-brutality.ino file.
+5. Press "Upload".
+6. Done!
 
-Mod will have future updates, so feel free to give feedback or report a bug!
+### Wiring
+
+![wiring](/images/wiring.png?raw=true)
+(Nano have all pins, that Uno does, but in different places).
 ___
 
 ### Features:
@@ -46,6 +51,7 @@ ___
 * More diverse and improved gameplay
 * Logical ending of the game
 * Multi - altitude environment
+* Playable in Wokwi
 
 ___
 
