@@ -12,12 +12,9 @@ using namespace std;
 #define sign(a, b)            (double) (a > b ? 1 : (b > a ? -1 : 0))
 
 void setup(void) {
-
   setupDisplay();
   input_setup();
   sound_init();
-
-
 }
 
 uint8_t scene = INTRO;
@@ -35,7 +32,6 @@ bool m = true;
 uint8_t rc1 = 0;
 int16_t a = 0;  
 uint8_t enemyCount2 = 0;
-uint8_t enemyGoal2 = 8;
 // game
 // player and entities
 Player player;
@@ -45,9 +41,8 @@ uint8_t num_entities = 0;
 uint8_t num_static_entities = 0;
 uint8_t x = 0;
 uint8_t enemyCount = 0;
-uint8_t del = 0;
-bool levelID = false;
-uint8_t enemyGoal = 20;
+bool del;
+bool levelID = true;
 bool fade_e = true;
 bool debug = false;
 uint8_t r = 0;
@@ -57,6 +52,7 @@ uint8_t k;
 int8_t mid = 1;
 bool bss = false;
 bool mc = false;
+bool EnemySpawn;
 
 
 // Jump to another scene
@@ -233,24 +229,12 @@ UID detectCollision(const uint8_t level[], Coords *pos, double relative_x, doubl
   uint8_t round_y = int(pos->y + relative_y);
   uint8_t block = getBlockAt(level, round_x, round_y);
 
-  if (block == E_WALL & debug == false) {
+  if ((block == E_WALL || block == E_COLL) && debug == false) {
     playSound(hit_wall_snd, HIT_WALL_SND_LEN);
     return create_uid(block, round_x, round_y);
   }
-  else if (block == E_DOOR && player.secret == false) {
+  else if ((block == E_DOOR && player.secret == false)||(block == E_DOOR2 && player.secret2 == false)||(block == E_DOOR3 && player.secret3 == false)) {
     player.secret = true;
-    z = 8;
-    updateHud();
-    playSound(s_snd, S_SND_LEN);
-  }
-  else if (block == E_DOOR2 && player.secret2 == false) {
-    player.secret2 = true;
-    z = 8;
-    updateHud();
-    playSound(s_snd, S_SND_LEN);
-  }
-  else if (block == E_DOOR3 && player.secret3 == false) {
-    player.secret3 = true;
     z = 8;
     updateHud();
     playSound(s_snd, S_SND_LEN);
@@ -410,28 +394,22 @@ void updateEntities(const uint8_t level[]) {
               if (x == 1 ) {
                 spawnEntity(E_KEY, entity[i].pos.x, entity[i].pos.y);
                 entity[i].a = true;
-                enemyCount ++;
-                z = 7;
               }
               else if (x == 2 ) {
                 spawnEntity(E_KEY, entity[i].pos.x, entity[i].pos.y);
                 entity[i].a = true;
-                enemyCount ++;
-                z = 7;
                 
               }
               else if (x == 3 ) {
                 spawnEntity(E_MEDIKIT, entity[i].pos.x, entity[i].pos.y);
                 entity[i].a = true;
-                enemyCount ++;
-                z = 7;
               }
               else {
                 entity[i].a = true;
-                enemyCount ++;
-                z = 7;
               }
-              if (bss == true) enemyCount2++;
+              if (bss == true) {enemyCount2++; EnemySpawn = true;}
+              else enemyCount++;
+              z = 7;
             }
             if (bss == true && enemyCount > 2) {
             }
@@ -928,13 +906,11 @@ void updateHud() {
   else if (z == 7) {
     if (levelID == true && bss == true) {
       drawText(37, 58, enemyCount2);
-      drawText(52, 58, F("OUT OF "));
-      drawText(87, 58, enemyGoal2);
+      drawText(52, 58, F("OUT OF 8"));
     }
     else if (levelID == false) {
       drawText(37, 58, enemyCount);
-      drawText(52, 58, F("OUT OF "));
-      drawText(87, 58, enemyGoal);
+      drawText(52, 58, F("OUT OF 20"));
     }
   }
   else if (z == 8) {
@@ -1011,9 +987,9 @@ void loopMid() {
     drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .51, F("AND KILLS YOU. YOU DIDNT"));
     drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .60, F("EXPECT THIS. YOUR FIGHT"));
     drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .70, F("CANT END LIKE THIS..."));
-    drawText(SCREEN_WIDTH / 4.6 - 26, SCREEN_HEIGHT * .80, F("THE END (MAYBE...)"));
+    drawText(SCREEN_WIDTH / 4.6 - 15, SCREEN_HEIGHT * .80, F("THE END (MAYBE...)"));
   }
-  drawText(SCREEN_WIDTH / 2.1 - 24, SCREEN_HEIGHT * .01, F("THE STORY"));
+  drawText(SCREEN_WIDTH / 2.1 - 14, SCREEN_HEIGHT * .01, F("STORY"));
   drawText(SCREEN_WIDTH / 2 - 27, SCREEN_HEIGHT * .91, F("PRESS FIRE"));
 
   display.display();
@@ -1021,6 +997,7 @@ void loopMid() {
     if (input_fire()) {
       fade_e = true;
       if (mid < 3) {
+        if(mid == 1){music = 99;}
         jumpTo(GAME_PLAY);
       }
       else {
@@ -1106,8 +1083,6 @@ void loopScore() {
     }
     if (mc == false) {
       m = false;
-      music = 1;
-      playSound(mus_s1_snd, MUS_S1_SND_LEN);
       delay(100);
       mc = true;
     }
@@ -1142,9 +1117,10 @@ void loopIntro() {
   drawText(SCREEN_WIDTH / 2.36 - 25, SCREEN_HEIGHT * .79, F("NANO BRUTALITY"));
   drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .3, F("PRESS"));
   drawText(SCREEN_WIDTH / 0.99 - 25, SCREEN_HEIGHT * .3, F("FIRE"));
-  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.6"));
+  drawText(SCREEN_WIDTH / 4.6 - 25, SCREEN_HEIGHT * .91, F("V 1.7"));
   display.display();
   playSound(mus_s1_snd, MUS_S1_SND_LEN);
+  levelID = false;
   while (!exit_scene) {
     if (input_fire()) jumpTo(DIFF);
   };
@@ -1206,6 +1182,7 @@ void loopDiff() {
     }
     else if (input_fire()) {
       fade_e = true;
+      m = false;
       jumpTo(MUS);
     }
   };
@@ -1226,15 +1203,15 @@ void loopMus() {
 
   drawText(SCREEN_WIDTH / 2.75 - 25, SCREEN_HEIGHT * .25, F("MUSIC"));
 
-  drawText(SCREEN_WIDTH / 2.66 - 25, SCREEN_HEIGHT * .39, F("OFF"));
+  drawText(SCREEN_WIDTH / 2.66 - 25, SCREEN_HEIGHT * .39, F("ON"));
 
-  drawText(SCREEN_WIDTH / 2.66 - 25, SCREEN_HEIGHT * .50, F("ON (NOT RECOMENDED)"));
+  drawText(SCREEN_WIDTH / 2.66 - 25, SCREEN_HEIGHT * .50, F("OFF"));
 
 
-  if (m == false) {
+  if (m) {
     drawText(SCREEN_WIDTH / 3 - 25, SCREEN_HEIGHT * .50, F("#"));
   }
-  else if (m == true) {
+  else {
     drawText(SCREEN_WIDTH / 3 - 25, SCREEN_HEIGHT * .39, F("#"));
   }
 
@@ -1318,36 +1295,45 @@ void loopGamePlay() {
       spawnEntity(E_ENEMY, 10, 38);
       spawnEntity(E_ENEMY, 13, 38);
       bss = true;
+      if(!m){
+        music = 1;
+        playSound(mus_s1_snd, MUS_S1_SND_LEN);
+      }
+      //music = 1;
     }
     if (player.pos.y >= 55 && player.pos.y <=56 && player.pos.x >= 12 && player.pos.x <= 23 && levelID == true) {
       mid = 3;
-      m = false;
+      music = 1;
       playSound(mus_s1_snd, MUS_S1_SND_LEN);
       jumpTo(MID);
     }
-    if (levelID == true && bss == true) {
-      if (enemyCount == 1 || enemyCount == 5 || enemyCount == 9 ) {
-        clearEntities();
-        enemyCount++;
-        spawnEntity(E_ENEMY, 13, 38);
-        
+    if (bss == true) {
+      if(EnemySpawn){
+        if (enemyCount2 % 2 == 1) {
+          clearEntities();
+          spawnEntity(E_ENEMY, 13, 38);
+          
+        }
+        else{
+          clearEntities();
+          spawnEntity(E_ENEMY, 10, 38);
+        }
+        EnemySpawn = false;
       }
-      else if (enemyCount == 3 || enemyCount == 7 || enemyCount == 11) {
+
+      if (enemyCount % 2 == 3){
         clearEntities();
-        enemyCount++;
-        spawnEntity(E_ENEMY, 10, 38);
       }
-      else if (enemyCount == 13) {
-        player.pos.y = player.pos.y + 12;
-        enemyCount = 0;
-        enemyCount2 = 8;
+
+      if (enemyCount2 == 8 && enemyCount != 69) {
+        player.pos.y += 12;
+        enemyCount = 69;
+        music = 99;
         updateHud();
       }
     }
     
-    if (m == true) {
-      music = 99;
-    }
+    
 
     // If the player is alive
     if (player.health > 0) {
@@ -1357,11 +1343,11 @@ void loopGamePlay() {
           view_height -= 4; 
           jump_height -= 4;
         }
-        else if (jump_height < 20 && jump == 1) {
+        else if (jump_height < 24 && jump == 1) {
           view_height += 4;
           jump_height += 4; 
         }
-        else if (jump_height == 20) jump = 2;
+        else if (jump_height == 24) jump = 2;
         else if (jump_height == 0) jump = 0;
 
         vel = 2;
@@ -1456,7 +1442,7 @@ void loopGamePlay() {
       } else if (gun_pos < GUN_TARGET_POS) {
         // Showing up
         gun_pos += 2;
-      } else if (!gun_fired && input_fire() && player.keys>0 && reload1 == false) {
+      } else if (!gun_fired && input_fire() && player.keys>0 && reload1 == false && enemyCount<20) {
         // ready to fire and fire pressed
         gun_pos = GUN_SHOT_POS;
         gun_fired = true;
@@ -1519,15 +1505,14 @@ void loopGamePlay() {
 
 
 
-
-    if (enemyCount == enemyGoal && levelID == false) {
+    if (enemyCount == 20 && levelID == false) {
       z = 3;
       updateHud();
       z = 5;
       updateHud();
-      if (del == 0) {
+      if (!del) {
         delay(200);
-        del++;
+        del = true;
       }
       if (input_fire()){
         player.pos.x = 230;
@@ -1544,7 +1529,7 @@ void loopGamePlay() {
     if (levelID == false) {
       updateEntities(E1M1);
     }
-    if (levelID == true) {
+    else {
       updateEntities(E1M2);
     }
     
@@ -1557,7 +1542,7 @@ void loopGamePlay() {
     if (levelID == false) {
       renderMap(E1M1, view_height);
     }
-    else if (levelID == true) {
+    else{
       renderMap(E1M2, view_height);
     }
 
