@@ -81,5 +81,5 @@ ___
 + [X] ~~Release the game~~
 ___
 
-### And please, don't try to research how does it works, my coding skills can hurt you!
+### And please, don't try to research how does it work, my coding skills can hurt you!
 
